@@ -5,11 +5,10 @@ INFO TO DCMODIFY
 	(these apply to both TLC + RV, though must be same patient, same visit)
 		StudyID = BLF-120076-BL
 		PatientID = H-29495
+		PatientName = 120076
 
 	(Specific to TLC vs. RV)
 		SeriesDescription = INSPIRATION 0.75 Qr40f
-
-	dcmodify "PatientName=120076" as well? Or is patient name only included with StudyID? If so, move PatientName to SUPPORTING INFO.
 
 
 SUPPORTING INFO
@@ -25,7 +24,7 @@ GLOSSARY
 	FRC/RV = EXPIRATION
 
 	(Modify General Variables)
-	gci -Recurse | %{dcmodify -nb -v -m "PatientID=H-29495" -m "StudyID=BLF-120076-BL" $_.FullName}
+	gci -Recurse | %{dcmodify -nb -v -m "PatientID=H-29495" -m "StudyID=BLF-120076-BL" -m "PatientName=120076" $_.FullName}
 
 	(Modify TLC vs. RV Specific Variables)
 	gci -Recurse | %{dcmodify -nb -v -m "SeriesDescription=INSPIRATION 0.75 Qr40f" $_.FullName}
