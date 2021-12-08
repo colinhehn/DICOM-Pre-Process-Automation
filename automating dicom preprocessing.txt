@@ -1,0 +1,41 @@
+iterate through the file structure, regardless of how many we give the program (120076, 130002, 130003 directories)
+
+1. Create variables for Database Info
+	- DATABASE = mifar06
+	- USERNAME = postgres
+	- HOSTNAME = db.iclic.uihc.uiowa.edu
+	- PASSWORD = ''
+	- Designate which directory in the Database we want to conduct the script inside.
+
+2. Script needs to connect to database first, in order to reach directory
+	- Google "python connect to postgres database," from there find directory
+
+3. Needs to iterate through certain directories
+	- OUTERMOST LOOP: Going from patient to patient (120076 to 130002 to 130003)
+
+	- For each of those patient directories:
+		1. Find all necessary variables for changing
+			- PatientName + StudyID given by overarching Directory name (120076)
+			- Withdraw Slice Depth & Kernel from one of the DICOM files in the Directory (can be any)
+			- Get PatientID by running SELECT mf_next_sub_autoname('H'), use what it returns
+
+		2. dcmodify PatientName, PatientID, StudyID from the overarching Directory (-Recurse, this applies to every file)
+
+		3. MAKE ANOTHER LOOP: Going from folder to folder (will just be 2, INSP and EXP folder)
+			- For each folder:
+				1. Find if it's INSP vs. EXP from directory name (.contains('FRC' or 'RV' or 'TLC')
+				2. dcmodify SeriesDescription from each directory
+
+		4. Boom all the stuff we needed to change has been changed: Pre-Processing Complete.
+
+
+SIMPLIFIED FUNCTIONALITY
+1. Connect to database
+2. Iterate through each patient folder (120076, etc.)
+3. Upon entering folder:
+	- Acquire PatientName from folder, make StudyID
+	- Acquire Slice Depth & Kernel, from first DICOM file you find.
+	- Run SELECT mf_next_sub_autoname('H') for PatientID
+	- dcmodify those variables (-Recurse) for all DICOM files in there.
+4. Find INSP/EXP from folder name of each subdirectory
+5. 
