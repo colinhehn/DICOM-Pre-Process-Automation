@@ -5,6 +5,7 @@ INFO TO DCMODIFY
 	(these apply to both TLC + RV, though must be same patient, same visit)
 		StudyID = BLF-120076-BL
 		PatientID = H-29495
+		PatientName = 120076
 
 	(Specific to TLC vs. RV)
 		SeriesDescription = INSPIRATION 0.75 Qr40f
