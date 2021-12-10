@@ -54,8 +54,10 @@ for patient in patient_list:
         # Acquire breath type from folder name
         if('TLC' in type):
             SeriesDescription += 'INSPIRATION '
-        else:
+        elif('RV' in type or 'FRC' in type):
             SeriesDescription += 'EXPIRATION '
+        else:
+            SeriesDescription += 'UNKNOWN '
         
         # Acquire kernel, slice thickness from DICOM file (assume all in same directory have same properties)
         os.chdir(type)
