@@ -1,0 +1,14 @@
+Need to use the files in SARP1_2 to see which H-Numbers we already have downloaded, and exclude those from being downloaded in the next query we make.
+With the script Patrick gave me, I have a full list of all the H-Numbers we can grab, so subtract our current H-Numbers downloaded from that list.
+
+Tasks (basic level):
+    1. Compile list of H-Numbers from SARP1_2 directory.
+    2. Cross reference that list with the one Patrick gave me. Subtract all H-Number's from list #1 from list #2 (one with all H-Numbers).
+
+
+
+
+    SCOUT
+    topogram
+    DETAIL
+    
