@@ -1,0 +1,33 @@
+RECAP
+------------------------------------------------------------------
+
+1. SARP1_2_ID, throw into MIFAR_SARP_NOTES with ctrl+f, find H-Number, compile into text file
+2. Format H numbers in vscode session   H-5259 --> 'H-5259','H-3857' (beginning = ^, end = $)
+					H-3857
+3. Enter into first query in pgadmin, grab all id's from results, put into another vscode session
+4. Format id's onto one line separated by commas (replace \n --> ,)
+5. Enter into second query in pgadmin, grab all info (click top left corner), put into yet another vscode session
+6. Format --> Remove all quotes, Replace \t with + between fields.
+7. Create input_file.txt (make sure it's not .txt.txt) in SARP1_2), make sure directory in script is matching
+8. Run download_dicom_from_wapsipinicon wth ctrl + F5
+9. Take a breather :)
+
+
+54 valid h-numbers out of 115
+
+green = ID inferred from number (4923 --> 4923Y)
+yellow = No entry found
+white = Found without issue
+
+
+PGAdmin Queries
+-------------------------------------------------------------------
+SELECT dser.id, id_of_study, dser.oname
+FROM dcmsub_t dsub
+INNER JOIN dcmstudy_t dstud ON dsub.id = dstud.dcmsub_id
+LEFT JOIN dcmseries dser ON dstud.id = dser.dcmstudy_id
+LEFT JOIN ctseries_t cser ON cser.id = dser.id
+WHERE patient_id in ()
+
+
+SELECT url, fname FROM series_url WHERE series_id IN ()

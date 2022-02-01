@@ -1,0 +1,58 @@
+Sorting & Categorizing Outdated SARP Files
+
+	When we have old, differently formatted data from studies like SARP, the data can kind of be
+	all over the place. With these scattered datasets, we need to compile which entries go together,
+	in that they are from the same study, patient, etc.
+	
+	This article will cover how you can go about categorizing these SARP entries in order to compile
+	and organize these SARP entries into a form we can store more confidently in our database.
+
+	** THIS ARTICLE ASSUMES YOU HAVE ALL YOUR ENTRIES IN A .xlsx FILE FORMAT (in a Spreadsheet). **
+		For help with this, visit "Compiling study entries into a spreadsheet with PASS."
+
+Now, let's begin!
+
+1. Create 6 columns on the leftmost side of the Spreadsheet. If you want, make the rightmost
+blank column a different color as a divider.
+
+2. Move the following columns into the 6 blank ones we created, each with it's own column:
+	- Patient ID
+	- Patient's Name
+	- Study ID
+	- Study Instance UID
+	- Series Instance UID
+
+3. Under the data tab at the top, sort the entire spreadsheet by PatientID (Choose the A to Z 
+option in the sorting window). This will group all duplicate Patient ID entries together and
+make the following steps much easier.
+
+4. Now comes the highlighting. Look at each group of PatientID's. Based on the following factors,
+highlight accordingly.
+	- If ALL of the Study ID's in that group of PatientID's are the same. Highlight the entire
+	group of rows GREEN and BLUE (Alternate for readability).
+	- If there are multiple different Study ID's in that group of PatientID's (for instance, in
+	PatientID = H-11345, there is SARP-563, SARP-572, etc.), highlight the groups of Study ID's
+	with different shades of YELLOW and ORANGE (Alternate at each group of PatientID's for readability).
+	All the SARP-563's in H-11345 would be a darker yellow, and all the SARP-572's a lighter yellow,
+	and so forth.
+
+	This concludes the categorization based on tags in the Spreadsheet.
+
+Clothing Verification
+
+	With our Spreadsheet categorized and looking good, we now need to verify that all the entries we
+	highlighted under the same color (in groups) are actually from the same study and belong together.
+	To do this, we need to view a DICOM file from each directory and make sure there are no discrepancies
+	in the clothing the patient is wearing.
+
+1. ** WORK IN PROGRESS **
+
+H-716 specifically SARP 27, 146, and 147 are weirdly similar though looks as if the picture was taken through
+a different lens. Feels like they might be the same subject. How to follow up? 
+
+Other large groups of differentiating SARP values in a specific patient (ex. H-11982) seem to be different
+as expected and the same throughout the SARP values. 
+
+Focus on problematic entries? By that I mean the ones with multiple different SARP values, and not those
+with multiple of the same SARP value, like big groups as seen in H-11982. Those with similar #'s for
+the SARP values could be merged as well potentially. Focus on these factors for now?
