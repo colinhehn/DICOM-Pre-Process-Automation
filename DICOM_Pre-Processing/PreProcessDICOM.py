@@ -9,10 +9,10 @@ root_directory = 'Z:\Project\BLF\Human Scans\Dispatch Received\IMPORT'
 def retrieve_new_PatientID():
     try:
         connection = psycopg2.connect(
-            host='db.i-clic.uihc.uiowa.edu',
-            database='mifar06',
-            user='postgres',
-            password='Ii~tyv[]?')
+            host='CONFIDENTIAL',
+            database='CONFIDENTIAL',
+            user='CONFIDENTIAL',
+            password='CONFIDENTIAL')
 
         with connection.cursor() as curs:
             curs.execute("SELECT mf_next_sub_autoname('H')")
